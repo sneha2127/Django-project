@@ -1,0 +1,37 @@
+{% extends 'blog/base.html'%}
+{% load static %}
+
+{% block msg %}
+<h1 class="text-white my-5 text-center">Dashboard Page/ Add Post</h1>
+{% endblock msg %}
+
+{% block side %}
+<div class="card col-sm-3 my-4" style="height: 180px;">
+  <div class="card-body">
+    <h5 class="card-title text-dark">Profile</h5>
+    <h6 class="card-subtitle mb-2 text-body-secondary text-dark">{{full_name}}</h6>
+    {% for group in groups %}
+       <p class='text-dark'>{{group.name}}</p>
+    {% endfor %}
+    <a href="{% url 'logout' %}" class="btn btn-primary">Logout</a>
+  </div>
+</div>
+{% endblock side %}
+
+
+{% block content %}
+<div class="col-sm-8">
+    
+    <form action="." method="post" novalidate>
+        {% csrf_token %}
+        {% for fm in form %}
+        <div class="form-group">
+            {{fm.label_tag}} {{fm}} <small class="text-warning">
+                {{fm.errors|striptags}} </small>
+        </div>
+        {% endfor %}
+        <input action= "{% url 'dashboard' %}" method="post" type="submit" value="Add Post" class="btn btn-success">
+        <a href="{% url 'dashboard' %}" class="btn btn-danger">Cancel</a>
+    </form>
+</div>
+{% endblock content%}

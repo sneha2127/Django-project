@@ -1,0 +1,26 @@
+{% extends 'blog/base.html'%}
+{% load static %}
+
+{% block msg %}
+
+{% endblock msg %}
+
+
+{% block content %}
+<div class="col-sm-10">
+    <h1 class="text-white my-5">Dashboard Page/ Update Post</h1>
+    <form action="." method="post" novalidate>
+        {% csrf_token %}
+        {% for fm in form %}
+        <div class="form-group">
+            {{fm.label_tag}} {{fm}} <small class="text-warning">
+                {{fm.errors|striptags}} </small>
+        </div>
+        {% endfor %}
+        <input type="Submit" class = 'btn btn-warning' value="Update">
+        <a href="{% url 'dashboard' %}" class="btn btn-danger">Cancel</a>
+    </form>
+    
+
+</div>
+{% endblock content%}
