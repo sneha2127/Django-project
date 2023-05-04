@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 # command to run this project with certificate and get social login
 # python3 manage.py runserver_plus --cert-file cert.crt
+#Added comment
 
 from pathlib import Path
 # this code avoids the import error for force_str
